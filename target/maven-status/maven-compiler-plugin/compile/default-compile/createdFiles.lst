@@ -1,0 +1,15 @@
+com\tiantian\springintejms\entity\Email.class
+com\tiantian\springintejms\service\ConsumerService.class
+com\tiantian\springintejms\service\ProducerService.class
+com\tiantian\springintejms\service\TopicConsumer.class
+com\tiantian\springintejms\message\EmailMessageConverter.class
+com\tiantian\springintejms\service\impl\ProducerServiceImpl$1.class
+com\tiantian\springintejms\service\impl\ProducerServiceImpl$2.class
+com\tiantian\springintejms\utils\TestRedis.class
+com\tiantian\springintejms\listener\ConsumerMessageListener.class
+com\tiantian\springintejms\utils\RedisUtil.class
+com\tiantian\springintejms\controller\SenderController.class
+com\tiantian\springintejms\converter\EmailMessageConverter.class
+com\tiantian\springintejms\service\impl\ProducerServiceImpl.class
+com\tiantian\springintejms\service\impl\ConsumerServiceImpl.class
+com\tiantian\springintejms\service\impl\ProducerServiceImpl$3.class

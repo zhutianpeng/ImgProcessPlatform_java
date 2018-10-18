@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+
+	<context:component-scan base-package="com.tiantian" />
+
+	<context:property-placeholder location="classpath:properties/redis.properties"/>
+
+	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://10.103.238.165:61616"/>
+	</bean>
+
+	<!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+	<!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+	</bean>
+	
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="deliveryMode" value="1"/>
+	</bean>
+	
+	<!--这个是队列目的地-->
+	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>video</value>
+		</constructor-arg>
+	</bean>
+
+    <!--&lt;!&ndash;这个是sessionAwareQueue目的地&ndash;&gt;-->
+	<!--<bean id="sessionAwareQueue" class="org.apache.activemq.command.ActiveMQQueue">-->
+		<!--<constructor-arg>-->
+			<!--<value>sessionAwareQueue</value>-->
+		<!--</constructor-arg>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; 用于测试消息监听适配器的队列目的地 &ndash;&gt;-->
+	<!--<bean id="adapterQueue" class="org.apache.activemq.command.ActiveMQQueue">-->
+		<!--<constructor-arg>-->
+			<!--<value>adapterQueue</value>-->
+		<!--</constructor-arg>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; 用于测试消息回复的 &ndash;&gt;-->
+	<!--<bean id="responseQueue" class="org.apache.activemq.command.ActiveMQQueue">-->
+		<!--<constructor-arg>-->
+			<!--<value>responseQueue</value>-->
+		<!--</constructor-arg>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; 默认的消息回复队列 &ndash;&gt;-->
+	<!--<bean id="defaultResponseQueue" class="org.apache.activemq.command.ActiveMQQueue">-->
+		<!--<constructor-arg>-->
+			<!--<value>defaultResponseQueue</value>-->
+		<!--</constructor-arg>-->
+	<!--</bean>-->
+	
+	<!--&lt;!&ndash;这个是主题目的地&ndash;&gt;-->
+	<!--<bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">-->
+		<!--<constructor-arg value="topic"/>-->
+	<!--</bean>-->
+
+	<!-- 消息监听器 -->
+
+	<bean id="consumerMessageListener" class="com.tiantian.springintejms.listener.ConsumerMessageListener">
+	</bean>
+
+	<!-- 可以获取session的MessageListener -->
+	<!--<bean id="consumerSessionAwareMessageListener" class="com.tiantian.springintejms.listener.ConsumerSessionAwareMessageListener">-->
+		<!--<property name="destination" ref="queueDestination"/>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; 消息监听适配器 &ndash;&gt;-->
+	<!--<bean id="messageListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">-->
+		<!--&lt;!&ndash; <constructor-arg>-->
+			<!--<bean class="com.tiantian.springintejms.listener.ConsumerListener"/>-->
+		<!--</constructor-arg> &ndash;&gt;-->
+		<!--<property name="delegate">-->
+			<!--<bean class="com.tiantian.springintejms.listener.ConsumerListener"/>-->
+		<!--</property>-->
+		<!--<property name="defaultListenerMethod" value="receiveMessage"/>-->
+		<!--<property name="defaultResponseDestination" ref="defaultResponseQueue"/>-->
+		<!--<property name="messageConverter">-->
+			<!--<null/>-->
+		<!--</property>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; responseQueue对应的监听器 &ndash;&gt;-->
+	<!--<bean id="responseQueueListener" class="com.tiantian.springintejms.listener.ResponseQueueListener"/>-->
+	<!--&lt;!&ndash; defaultResponseQueue对应的监听器 &ndash;&gt;-->
+	<!--<bean id="defaultResponseQueueListener" class="com.tiantian.springintejms.listener.DefaultResponseQueueListener"/>-->
+	<!--&lt;!&ndash; 消息监听适配器对应的监听容器 &ndash;&gt;-->
+	<!--<bean id="messageListenerAdapterContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+		<!--<property name="connectionFactory" ref="connectionFactory"/>-->
+		<!--<property name="destination" ref="adapterQueue"/>-->
+		<!--<property name="messageListener" ref="messageListenerAdapter"/>&lt;!&ndash; 使用MessageListenerAdapter来作为消息监听器 &ndash;&gt;-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; responseQueue对应的监听容器 &ndash;&gt;-->
+	<!--<bean id="responseQueueMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+		<!--<property name="connectionFactory" ref="connectionFactory"/>-->
+		<!--<property name="destination" ref="responseQueue"/>-->
+		<!--<property name="messageListener" ref="responseQueueListener"/>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; defaultResponseQueue对应的监听容器 &ndash;&gt;-->
+	<!--<bean id="defaultResponseQueueMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+		<!--<property name="connectionFactory" ref="connectionFactory"/>-->
+		<!--<property name="destination" ref="defaultResponseQueue"/>-->
+		<!--<property name="messageListener" ref="defaultResponseQueueListener"/>-->
+	<!--</bean>-->
+	<!-- 消息监听容器 -->
+	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="queueDestination" />
+		<property name="messageListener" ref="consumerMessageListener" />
+	</bean>
+
+    <!--<bean id="topicConsumer" class="com.tiantian.springintejms.service.TopicConsumer">-->
+    <!--</bean>-->
+
+<!--&lt;!&ndash; 消息监听容器 &ndash;&gt;-->
+    <!--<bean id="jmsContainer"-->
+	<!--class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+	<!--<property name="connectionFactory" ref="connectionFactory" />-->
+	<!--<property name="destination" ref="topicDestination" />-->
+	<!--<property name="messageListener" ref="topicConsumer" />-->
+	<!--</bean>-->
+	<!---->
+	<!--<bean id="sessionAwareListenerContainer"-->
+		<!--class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+		<!--<property name="connectionFactory" ref="connectionFactory" />-->
+		<!--<property name="destination" ref="sessionAwareQueue" />-->
+		<!--<property name="messageListener" ref="consumerSessionAwareMessageListener" />-->
+	<!--</bean>-->
+
+	<!-- 类型转换器 -->
+	<bean id="emailMessageConverter" class="com.tiantian.springintejms.converter.EmailMessageConverter"/>
+
+	<!--Jedis连接池的相关配置-->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!--新版是maxTotal，旧版是maxActive-->
+		<property name="maxTotal">
+			<value>${redis.pool.maxActive}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${redis.pool.maxIdle}</value>
+		</property>
+		<property name="testOnBorrow" value="true"/>
+		<property name="testOnReturn" value="true"/>
+	</bean>
+
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="poolConfig" ref="jedisPoolConfig" />
+		<constructor-arg name="host" value="${redis.host}" />
+		<constructor-arg name="port" value="${redis.port}" type="int" />
+		<constructor-arg name="timeout" value="${redis.timeout}" type="int" />
+		<constructor-arg name="password" value="${redis.password}" />
+		<constructor-arg name="database" value="${redis.database}" type="int" />
+	</bean>
+
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
+		<property name="poolConfig" ref="jedisPoolConfig"></property>
+		<property name="hostName" value="${redis.host}"></property>
+		<property name="port" value="${redis.port}"></property>
+		<property name="timeout" value="${redis.timeout}"></property>
+		<property name="password" value="${redis.password}"></property>
+		<property name="usePool" value="true"></property>
+	</bean>
+
+	<bean id="jedisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory"></property>
+		<property name="defaultSerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+		</property>
+	</bean>
+
+
+	<bean id="redisMessageListener" class="com.tiantian.springintejms.service.impl.RedisSubServiceImpl">
+	</bean>
+	<bean id="channelTopic" class="org.springframework.data.redis.listener.ChannelTopic">
+		<constructor-arg value="test_channel" />
+	</bean>
+
+	<bean id="topicContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer" destroy-method="destroy">
+		<property name="connectionFactory" ref="jedisConnectionFactory" />
+		<property name="messageListeners">
+			<map>
+				<entry key-ref="redisMessageListener">
+					<ref bean="channelTopic"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

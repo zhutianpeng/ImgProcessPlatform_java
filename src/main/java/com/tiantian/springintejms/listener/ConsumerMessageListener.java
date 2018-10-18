@@ -12,6 +12,7 @@ import java.util.UUID;
 
 /**
  * @author AndrewKing
+ * activemq 监听
  */
 public class ConsumerMessageListener implements MessageListener {
     @Autowired

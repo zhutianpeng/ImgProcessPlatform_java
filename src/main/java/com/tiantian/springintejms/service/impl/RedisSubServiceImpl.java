@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  * Created by AndrewKing on 10/14/2018.
+ * redis 监听
  */
 public class RedisSubServiceImpl implements RedisSubService {
     @Autowired
@@ -43,6 +44,9 @@ public class RedisSubServiceImpl implements RedisSubService {
         if(StringUtils.isNotBlank(poseResultString)){
             imageResult = PoseUtils.drawHumans(poseResultString,imageContent);
         }
+
+//        face
+
 
         Map<String,String> result = new HashMap<String, String>();
         result.put("image",imageResult);

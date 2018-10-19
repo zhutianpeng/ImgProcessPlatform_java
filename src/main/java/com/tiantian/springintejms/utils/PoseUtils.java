@@ -21,7 +21,7 @@ public class PoseUtils {
 
     static{
 //        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        String path = "E:\\opencv_idea\\opencv\\build\\java\\x64\\opencv_java2413.dll";
+        String path = OpencvConfig.dllPath;
         System.load(path);
     }
 

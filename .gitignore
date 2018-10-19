@@ -1,19 +1,14 @@
 # Created by https://www.gitignore.io/api/maven,windows,intellij
 
 ### Intellij ###
-.idea/
+.idea/*
 *.imi
+*.classes
 logs
 
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
 
 # CMake
 cmake-build-debug/
-
-# Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
 
 ## File-based project format:
 *.iws
@@ -49,9 +44,6 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
-# Sonarlint plugin
-.idea/sonarlint
-
 ### Maven ###
 pom.xml.tag
 pom.xml.releaseBackup
@@ -73,6 +65,10 @@ ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
+
+# opencv
+opencv/*
+opencv.zip
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/

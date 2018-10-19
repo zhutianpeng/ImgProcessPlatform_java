@@ -3,6 +3,7 @@ package com.tiantian.springintejms.service.impl;
 import com.tiantian.springintejms.service.ProducerService;
 import com.tiantian.springintejms.service.RedisSubService;
 import com.tiantian.springintejms.utils.PoseUtils;
+import com.tiantian.springintejms.utils.faceUtils;
 import net.sf.json.JSONObject;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.lang.StringUtils;
@@ -46,10 +47,10 @@ public class RedisSubServiceImpl implements RedisSubService {
         }
 
 //        face
-        String faceResultString = jedis.hget(imageID,"faceResult");
-        if(StringUtils.isNotBlank(faceResultString)){
-            imageResult = faceUtils.drawFaces(faceResultString,imageResult);
-        }
+//        String faceResultString = jedis.hget(imageID,"faceResult");
+//        if(StringUtils.isNotBlank(faceResultString)){
+//            imageResult = faceUtils.drawFaces(faceResultString,imageResult);
+//        }
 
 
         Map<String,String> result = new HashMap<String, String>();

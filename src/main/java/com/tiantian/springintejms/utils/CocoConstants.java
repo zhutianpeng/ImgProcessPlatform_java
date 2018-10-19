@@ -11,7 +11,7 @@ import java.util.List;
 public class CocoConstants {
     static {
 //        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        String path = "E:\\opencv_idea\\opencv\\build\\java\\x64\\opencv_java2413.dll";
+        String path =  OpencvConfig.dllPath;
         System.load(path);
     }
 //       定义一些背景颜色

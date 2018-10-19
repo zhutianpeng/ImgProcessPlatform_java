@@ -46,6 +46,10 @@ public class RedisSubServiceImpl implements RedisSubService {
         }
 
 //        face
+        String faceResultString = jedis.hget(imageID,"faceResult");
+        if(StringUtils.isNotBlank(faceResultString)){
+            imageResult = faceUtils.drawFaces(faceResultString,imageResult);
+        }
 
 
         Map<String,String> result = new HashMap<String, String>();

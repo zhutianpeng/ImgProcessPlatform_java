@@ -1,9 +1,6 @@
 # Created by https://www.gitignore.io/api/maven,windows,intellij
 
 ### Intellij ###
-.idea/*
-*.imi
-*.classes
 logs
 
 

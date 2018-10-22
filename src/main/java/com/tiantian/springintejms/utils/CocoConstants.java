@@ -11,7 +11,7 @@ import java.util.List;
 public class CocoConstants {
     static {
 //        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        String path =  OpencvConfig.dllPath;
+        String path =  OpencvUtils.dllPath;
         System.load(path);
     }
 //       定义一些背景颜色
@@ -39,6 +39,5 @@ public class CocoConstants {
 
     public static int Background = 18;
 
-    public static int[ ] [ ] CocoPairsRender = {{1, 2},{1, 5},{1, 2}, {1, 5}, {2, 3}, {3, 4}, {5, 6}, {6, 7}, {1, 8}, {8, 9}, {9, 10}, {1, 11},{11, 12}, {12, 13}, {1, 0}, {0, 14}, {14, 16}, {0, 15}, {15, 17}};
-
+    public static int[ ] [ ] CocoPairsRender = {{1, 2},{1, 5}, {2, 3}, {3, 4}, {5, 6}, {6, 7}, {1, 8}, {8, 9}, {9, 10}, {1, 11},{11, 12}, {12, 13}, {1, 0}, {0, 14}, {14, 16}, {0, 15}, {15, 17}};
 }

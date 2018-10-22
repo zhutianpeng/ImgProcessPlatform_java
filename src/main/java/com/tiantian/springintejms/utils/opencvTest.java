@@ -9,7 +9,10 @@ import org.opencv.highgui.Highgui;
  */
 
 public class opencvTest{
-    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
+    static{
+//        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.load(OpencvUtils.dllPath);
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to OpenCV " + Core.VERSION);
@@ -40,6 +43,6 @@ public class opencvTest{
         Highgui.imwrite("H://77.png", mat);
 
         Mat imageTest = Highgui.imread("H://77.png");
-        String sBase64 = PoseUtils.MatToBase64(imageTest);
+        String sBase64 = OpencvUtils.MatToBase64(imageTest);
     }
 }

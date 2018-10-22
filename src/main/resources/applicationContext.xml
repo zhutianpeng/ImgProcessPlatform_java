@@ -183,7 +183,7 @@
 	<bean id="redisMessageListener" class="com.tiantian.springintejms.service.impl.RedisSubServiceImpl">
 	</bean>
 	<bean id="channelTopic" class="org.springframework.data.redis.listener.ChannelTopic">
-		<constructor-arg value="test_channel" />
+		<constructor-arg value="yanchuangChannel"/>
 	</bean>
 
 	<bean id="topicContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer" destroy-method="destroy">

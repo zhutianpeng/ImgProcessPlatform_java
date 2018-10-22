@@ -8,7 +8,7 @@ import org.opencv.highgui.Highgui;
  * Created by AndrewKing on 10/15/2018.
  */
 
-public class opencvTest{
+public class OpencvTest {
     static{
 //        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.load(OpencvUtils.dllPath);

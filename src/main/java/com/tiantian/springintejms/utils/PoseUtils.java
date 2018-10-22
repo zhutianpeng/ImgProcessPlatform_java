@@ -5,8 +5,11 @@ import net.sf.json.JSONObject;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by AndrewKing on 10/15/2018.
@@ -57,6 +60,18 @@ public class PoseUtils {
                     }
                     Core.line(image,centerMap.get(CocoConstants.CocoPairsRender[j][0]),centerMap.get(CocoConstants.CocoPairsRender[j][1]),CocoConstants.cocoColors.get(j),3);
                 }
+                // draw angle
+                for(int j=0;j<CocoConstants.CocoPairsAngle.length;j++){
+                    if(!(keySet.contains(String.valueOf(CocoConstants.CocoPairsAngle[j][0])) && keySet.contains(String.valueOf(CocoConstants.CocoPairsAngle[j][1])) && keySet.contains(String.valueOf(CocoConstants.CocoPairsAngle[j][2]))) ){
+                        continue;
+                    }
+                    Point P1 = centerMap.get(CocoConstants.CocoPairsAngle[j][0]);
+                    Point PCenter= centerMap.get(CocoConstants.CocoPairsAngle[j][1]);
+                    Point P2 = centerMap.get(CocoConstants.CocoPairsAngle[j][2]);
+                    String Angle = String.valueOf(OpencvUtils.getAngle(PCenter,P1,P2));
+                    Core.putText(image,Angle,PCenter, Core.FONT_ITALIC,0.8, new Scalar(124,252,0),1);
+                }
+
             }
             drawResult = OpencvUtils.MatToBase64(image);
         }

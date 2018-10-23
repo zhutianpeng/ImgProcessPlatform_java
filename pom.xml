@@ -18,6 +18,19 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.js</include>
+                    <include>**/*.css</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
     <properties>
@@ -121,12 +134,6 @@
             <version>2.2.3</version>
             <classifier>jdk15</classifier><!-- 指定jdk版本 -->
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>nu.pattern</groupId>-->
-            <!--<artifactId>opencv</artifactId>-->
-            <!--<version>2.4.9-4</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.opencv</groupId>

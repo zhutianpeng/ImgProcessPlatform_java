@@ -77,7 +77,6 @@ public class ConsumerMessageListener implements MessageListener {
 
                 //手动释放资源，不然会因为jedisPool里面的maxActive=200的限制，只能创建200个jedis资源。
                 jedis.close();
-//                  jedisPool.returnResource(jedis); //此方法弃用
 
             } catch (JMSException e) {
                 e.printStackTrace();

@@ -7,12 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="740d3934-a8a7-4e67-809b-331c0613d354" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/tempStaticPage/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/tempStaticPage/js/jquery-1.7.2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/tempStaticPage/js/stomp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/tempStaticPage/index.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/faceUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/FaceUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/opencvTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/OpencvTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/WEB-INF/classes/spring-mvc.xml" afterPath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/WEB-INF/classes/spring-mvc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/classes/artifacts/springMQ6_war_exploded/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/ConsumerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/PageController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/tempStaticPage/js/jquery-1.7.2.min.js" afterPath="$PROJECT_DIR$/web/WEB-INF/js/jquery-1.7.2.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/tempStaticPage/js/stomp.js" afterPath="$PROJECT_DIR$/web/WEB-INF/js/stomp.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,15 +75,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RedisSubServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="125">
+              <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1924#1940#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#video#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1466">
+              <caret line="184" column="26" lean-forward="false" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spring-mvc.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="21" column="61" lean-forward="true" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,63 +122,9 @@
       <file leaf-file-name="ConsumerMessageListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+            <state relative-caret-position="-267">
+              <caret line="40" column="97" lean-forward="false" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractMessageListenerContainer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/3.2.13.RELEASE/spring-jms-3.2.13.RELEASE-sources.jar!/org/springframework/jms/listener/AbstractMessageListenerContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="482" column="0" lean-forward="false" selection-start-line="482" selection-start-column="0" selection-end-line="482" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractPollingMessageListenerContainer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/3.2.13.RELEASE/spring-jms-3.2.13.RELEASE-sources.jar!/org/springframework/jms/listener/AbstractPollingMessageListenerContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultMessageListenerContainer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/3.2.13.RELEASE/spring-jms-3.2.13.RELEASE-sources.jar!/org/springframework/jms/listener/DefaultMessageListenerContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="1092" column="0" lean-forward="false" selection-start-line="1092" selection-start-column="0" selection-end-line="1092" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FaceUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/FaceUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="35" column="105" lean-forward="true" selection-start-line="35" selection-start-column="105" selection-end-line="35" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PoseUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/PoseUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1372">
-              <caret line="75" column="12" lean-forward="true" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -148,6 +137,7 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -181,6 +171,8 @@
       <find>add</find>
       <find>RedisSubServiceImpl</find>
       <find>redisMessageListener</find>
+      <find>springframework</find>
+      <find>DispatcherServlet</find>
     </findStrings>
     <replaceStrings>
       <replace>public static Scalar</replace>
@@ -214,10 +206,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/TestRedis.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/classes/logging.properties" />
         <option value="$PROJECT_DIR$/src/main/test/TestJedisPoolConfig.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/properties/redis.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/TopicConsumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/ConsumerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/ConsumerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/ConsumerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/SenderController.java" />
@@ -227,17 +217,23 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/RedisController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/ProducerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/faceUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/OpencvConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/opencvTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/OpencvUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/PoseUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/FaceUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/ConsumerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/PageController.java" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java" />
       </list>
     </option>
   </component>
@@ -343,6 +339,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ImgProcessPlatform_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImgProcessPlatform_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImgProcessPlatform_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImgProcessPlatform_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImgProcessPlatform_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -485,13 +513,19 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539919311308" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../motioncapture_bupt" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.14839134" />
     <property name="project.structure.side.proportion" value="0.41653788" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF" />
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web" />
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF\page" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\shareZTP\祝天鹏\阿里\activeMQ-master\MotionVisionJava\web\tempStaticPage" />
       <recent name="E:\shareZTP\祝天鹏\阿里\activeMQ-master\springMQ6" />
@@ -1179,7 +1213,7 @@
       <workItem from="1539852654114" duration="8200000" />
       <workItem from="1539917069284" duration="2285000" />
       <workItem from="1539936832580" duration="1724000" />
-      <workItem from="1540173094897" duration="24447000" />
+      <workItem from="1540173094897" duration="33542000" />
     </task>
     <servers />
   </component>
@@ -1216,7 +1250,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232483000" />
+    <option name="totallyTimeSpent" value="241578000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1244,18 +1278,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32834226" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1315508" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26737967" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35828876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23513062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23068371" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -1284,12 +1318,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/java/com/chr/domain/MessageList.java" />
-    <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/java/com/chr/service/SubService.java" />
-    <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/java/com/chr/service/PubService.java" />
-    <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/java/com/chr/service/impl/SubServiceImpl.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/activemq/activemq-core/5.7.0/activemq-core-5.7.0-sources.jar!/org/apache/activemq/memory/list/MessageList.java" />
-    <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/resources/config/redis-context.xml" />
     <entry file="file://$USER_HOME$/Desktop/redis-service_pubsub/redis-service/src/main/resources/config/spring-context.xml" />
     <entry file="jar://D:/jdk/jdk1.8/src.zip!/java/lang/Thread.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.5.2.RELEASE/spring-data-redis-1.5.2.RELEASE-sources.jar!/org/springframework/data/redis/connection/RedisConnectionFactory.java" />
@@ -1306,31 +1334,10 @@
     <entry file="jar://E:/opencv_idea/opencv/build/java/opencv-2413.jar!/org/opencv/core/Core.java" />
     <entry file="jar://D:/jdk/jdk1.8/src.zip!/com/sun/org/apache/xerces/internal/impl/dv/util/Base64.java" />
     <entry file="jar://E:/opencv_idea/opencv/build/java/opencv-2413.jar!/org/opencv/highgui/Highgui.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/ConsumerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/sf/json-lib/json-lib/2.2.3/json-lib-2.2.3-jdk15.jar!/net/sf/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="1073" column="32" lean-forward="false" selection-start-line="1073" selection-start-column="22" selection-end-line="1073" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/RedisController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/SenderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1380,14 +1387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="135" column="33" lean-forward="false" selection-start-line="135" selection-start-column="33" selection-end-line="135" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/OpencvTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -1412,22 +1411,6 @@
             <element signature="e#6252#6253#0" expanded="false" />
             <element signature="e#6320#6321#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="43" column="40" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/tempStaticPage/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1457,47 +1440,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.5.2.RELEASE/spring-data-redis-1.5.2.RELEASE-sources.jar!/org/springframework/data/redis/listener/ChannelTopic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-798">
           <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="100">
-            <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="184" column="26" lean-forward="false" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="26" />
-          <folding>
-            <element signature="e#7659#7674#0" expanded="true" />
-            <element signature="e#7785#7803#0" expanded="true" />
-            <element signature="e#7859#7878#0" expanded="true" />
-            <element signature="e#7923#7942#0" expanded="true" />
-            <element signature="e#8205#8220#0" expanded="true" />
-            <element signature="e#8263#8278#0" expanded="true" />
-            <element signature="e#8324#8342#0" expanded="true" />
-            <element signature="e#8389#8408#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1517,27 +1464,6 @@
           <caret line="75" column="12" lean-forward="true" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/FaceUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="35" column="105" lean-forward="true" selection-start-line="35" selection-start-column="105" selection-end-line="35" selection-end-column="105" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1924#1940#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1566,10 +1492,161 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/FaceUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="72" lean-forward="true" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/service/impl/RedisSubServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1924#1940#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tempStaticPage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/logging.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/RedisController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/SenderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/page/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="42" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/controller/PageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="100">
+            <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MotionVisionJava.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1683">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/js/stomp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#video#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1466">
+          <caret line="184" column="26" lean-forward="false" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="61" lean-forward="true" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/utils/CocoConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="43" column="97" lean-forward="true" selection-start-line="43" selection-start-column="97" selection-end-line="43" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiantian/springintejms/listener/ConsumerMessageListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        <state relative-caret-position="-267">
+          <caret line="40" column="97" lean-forward="false" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
           <folding />
         </state>
       </provider>
@@ -1577,6 +1654,17 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArquillianSettingsConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.41653788" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
@@ -1593,7 +1681,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring</last-edited>
+          <last-edited>Web (MotionVisionJava)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

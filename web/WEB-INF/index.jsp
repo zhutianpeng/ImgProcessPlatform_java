@@ -1,43 +1,31 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>实时人脸识别检测平台</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
+    <title>PoseEstimation</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/stomp.js"></script>
-
-    <%--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">--%>
-    <%--<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>--%>
-    <%--<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="jumbotron">
-            <h3 class="text-center">
-                基于websocket的实时人脸识别系统检测平台
-            </h3>
-            <p class="text-center">
-                <em>该平台是基于Django开发，集成了人脸数据采集模块、人脸检测模块以及人脸检测与识别模块。该平台将本毕设中的工作进行了很好的梳理，并有很强的可拓展性。</em>
-            </p>
-        </div>
-    </div>
-    <div style="visibility:hidden; width:0; height:0;">
-        <canvas id="canvas" width="800px" height="600px"></canvas>
-    </div>
+
+<div class="container">
     <div class="row clearfix">
         <div class="col-md-6 column">
-            <video id="video" style="display:block;margin: auto; width:800px; height:600px"></video>
+            <div style="visibility:hidden; width:0; height:0;">
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </div>
         </div>
         <div class="col-md-6 column">
-            <img id="target" style="display: block;margin: auto;"/>
+            <div>
+                <video id="video" autoplay style="display: inline;"></video>
+                <img id="target" style="display:inline;"/>
+            </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- Scripts placed at the end of the document so the pages load faster -->
@@ -83,7 +71,7 @@
 
 
     // var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mediaDevices.getUserMedia || navigator.msGetUserMedia);
-    var constraints = {audio: true, video: {width: 800, height: 600}};
+    var constraints = {audio: true, video: {width: 600, height: 600}};
 
     var video = document.querySelector('video');
     var canvas = document.querySelector('canvas');
@@ -158,13 +146,13 @@
 
     timer = setInterval(
         function () {
-            ctx.drawImage(video, 0, 0, 800, 600);
+            ctx.drawImage(video, 0, 0, 600, 600);
             var data = canvas.toDataURL('image/jpeg', 1.0);    //将获取到的图像转换为base64编码
             //newblob = dataURItoBlob(data);
 
             //添加状态判断，当为OPEN时，发送消息
             //var message = {};
-            client.send(destination, {'user-token': 123, 'task': 0x02}, data);//发送消息, 0x02 -> 0000 0010
+            client.send(destination, {'user-token': 123, 'task': 0x03}, data);//发送消息, 0x02 -> 0000 0010
 //            console.log("data sent")
         }, 100);
 

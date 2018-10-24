@@ -20,4 +20,5 @@
           p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
 
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 </beans>

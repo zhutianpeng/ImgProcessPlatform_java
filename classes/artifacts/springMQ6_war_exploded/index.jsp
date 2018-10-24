@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>PoseEstimation</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/stomp.js"></script>
-
 </head>
 <body>
-<div style="visibility:hidden; width:0; height:0;">
-    <canvas id="canvas" width="600" height="600"></canvas>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <div style="visibility:hidden; width:0; height:0;">
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6 column">
+            <div>
+                <video id="video" autoplay style="display: inline;"></video>
+                <img id="target" style="display:inline;"/>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <p>
-        test
-    </p>
-    <video id="video" autoplay style="display: inline;"></video>
-    <img id="target" style="display:inline;"/>
-</div>
+
 
 <!-- Scripts placed at the end of the document so the pages load faster -->
 
@@ -44,7 +53,7 @@
         img.src = imageData.image;
         //记录每次连接的时间
         var timestamp = new Date().getTime();
-        console.log("end=" + timestamp);
+//        console.log("end=" + timestamp);
     }
 
     var error_callback = function (error) {
@@ -106,8 +115,8 @@
         }
         video.onloadedmetadata = function (e) {
             //console.log("Label: " + localMediaStream.label);
-            console.log("AudioTracks", localMediaStream.getAudioTracks());
-            console.log("VideoTracks", localMediaStream.getVideoTracks());
+//            console.log("AudioTracks", localMediaStream.getAudioTracks());
+//            console.log("VideoTracks", localMediaStream.getVideoTracks());
             video.play();
         };
     }).catch(function (e) {
@@ -143,8 +152,8 @@
 
             //添加状态判断，当为OPEN时，发送消息
             //var message = {};
-            client.send(destination, {'user-token': 123, 'task': 0x01}, data);//发送消息, 0x02 -> 0000 0010
-            console.log("data sent")
+            client.send(destination, {'user-token': 123, 'task': 0x03}, data);//发送消息, 0x02 -> 0000 0010
+//            console.log("data sent")
         }, 100);
 
 </script>

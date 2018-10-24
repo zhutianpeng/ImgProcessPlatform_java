@@ -58,6 +58,7 @@ public class RedisSubServiceImpl implements RedisSubService {
         JSONObject output = JSONObject.fromObject(result);
 
 //       redis 释放资源
+        jedis.del(imageID);
         jedis.close();
 //        activeMQ send
         ActiveMQQueue destination = new ActiveMQQueue("/user/"+ userToken +"/video");

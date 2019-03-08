@@ -13,10 +13,9 @@
  
  **安装须知(opencv相关)**
  1. 下载 opencv（版本必须支持java api接口的）
- 本人提供的阿里云高速下载地址：
- 
- https://selfstudy.oss-cn-beijing.aliyuncs.com/project/opencv.zip
- 
+ 本人提供百度网盘
+ 链接：https://pan.baidu.com/s/1uL2GZ5m4b6k9Zd3cElenZg 
+ 提取码：aa4t 
  
  2. pom.xml 修改
 

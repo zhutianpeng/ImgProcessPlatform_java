@@ -5,16 +5,20 @@
 - 局域网下基本实时传输图像，server处理完的图像，client能通过网页的形式访问。时延较少。
 <br>
 
-**项目结构** 
-暂时没写
 
 **项目结构**
  ![To do...](https://github.com/zhutianpeng/ImgProcessPlatform/raw/master/readme_pic/1.png)
 
  ![Already done](https://github.com/zhutianpeng/ImgProcessPlatform/raw/master/readme_pic/2.png)
  
- ***安装须知***
- 1. pom.xml
+ **安装须知(opencv相关)**
+ 1. 下载 opencv（版本必须支持java api接口的）
+ 本人提供的阿里云高速下载地址：
+ 
+ https://selfstudy.oss-cn-beijing.aliyuncs.com/project/opencv.zip
+ 
+ 
+ 2. pom.xml 修改
 
 ```
     <dependency>
@@ -25,8 +29,15 @@
             <scope>system</scope>
     </dependency>
 ```
-2. java/com/tiantian/utils/OpencvUtils
+3. java/com/tiantian/utils/OpencvUtils 修改
 ```
 //change to your location
 public static final  String dllPath = "E:\\opencv_idea\\opencv\\build\\java\\x64\\opencv_java2413.dll";
+```
+
+4. 配置 VM options
+```
+找到 “Run -> Edit Configurations -> VM options”  配置如下信息：
+“-Djava.library.path=D:/opencv/build/java/x86;D:/opencv/build/x86/vc12/bin”。
+注意，所填写的目录应当为解压OpenCV时生成的相对目录。
 ```

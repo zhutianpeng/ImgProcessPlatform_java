@@ -12,4 +12,21 @@
  ![To do...](https://github.com/zhutianpeng/ImgProcessPlatform/raw/master/readme_pic/1.png)
 
  ![Already done](https://github.com/zhutianpeng/ImgProcessPlatform/raw/master/readme_pic/2.png)
+ 
+ ***安装须知***
+ 1. pom.xml
 
+```
+    <dependency>
+            <groupId>org.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>2.4.13</version>
+            <systemPath>"your location"/opencv-2413.jar</systemPath> 
+            <scope>system</scope>
+    </dependency>
+```
+2. java/com/tiantian/utils/OpencvUtils
+```
+//change to your location
+public static final  String dllPath = "E:\\opencv_idea\\opencv\\build\\java\\x64\\opencv_java2413.dll";
+```

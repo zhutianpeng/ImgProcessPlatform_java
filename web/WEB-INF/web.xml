@@ -13,7 +13,7 @@
     <!--welcome pages-->
     <welcome-file-list>
         <!--<welcome-file>index.jsp</welcome-file>-->
-        <welcome-file>/WEB-INF/jsp/test.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
 
     <listener>

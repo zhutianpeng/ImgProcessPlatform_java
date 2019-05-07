@@ -180,7 +180,7 @@
 
 
 	<bean id="redisMessageListener" class="com.tiantian.springintejms.service.impl.RedisSubServiceImpl">
-	</bean>
+</bean>
 	<bean id="channelTopic" class="org.springframework.data.redis.listener.ChannelTopic">
 		<constructor-arg value="yanchuangChannel"/>
 	</bean>

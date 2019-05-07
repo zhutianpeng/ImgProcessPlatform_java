@@ -74,7 +74,7 @@
     <orderEntry type="module-library">
       <library name="Maven: org.opencv:opencv:2.4.13">
         <CLASSES>
-          <root url="jar://E:/opencv_idea/opencv/build/java/opencv-2413.jar!/" />
+          <root url="jar://D:/opencv/build/java/opencv-2413.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

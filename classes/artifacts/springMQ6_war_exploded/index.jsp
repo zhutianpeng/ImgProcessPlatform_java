@@ -65,7 +65,7 @@
         var imageData = JSON.parse(message.body);
         img.src = imageData.image;
         //记录每次连接的时间
-        var timestamp = new Date().getTime();
+//        var timestamp = new Date().getTime();
 //        console.log("end=" + timestamp);
     }
 

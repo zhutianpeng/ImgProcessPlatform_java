@@ -12,13 +12,23 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
+    <!--启用spring的一些annotation -->
+    <context:annotation-config/>
+
+    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <mvc:annotation-driven/>
+
+
     <!-- 扫描controller（controller层注入） -->
     <context:component-scan base-package="com.tiantian.springintejms.controller"/>
 
     <!-- 对模型视图添加前后缀 -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
 
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/newStatics/js/" mapping="/newJs/**"/>
+    <mvc:resources location="/WEB-INF/newStatics/css/" mapping="/newCss/**"/>
+    <mvc:resources location="/WEB-INF/newStatics/webGL/" mapping="/webGL/**"/>
+    <mvc:resources location="/WEB-INF/newStatics/img/" mapping="/img/**"/>
 </beans>

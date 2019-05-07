@@ -11,10 +11,10 @@
     </context-param>
 
     <!--welcome pages-->
-    <welcome-file-list>
-        <!--<welcome-file>index.jsp</welcome-file>-->
-        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--&lt;!&ndash;<welcome-file>index.jsp</welcome-file>&ndash;&gt;-->
+        <!--<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

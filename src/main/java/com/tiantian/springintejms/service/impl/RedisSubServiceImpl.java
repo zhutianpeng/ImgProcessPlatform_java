@@ -52,16 +52,27 @@ public class RedisSubServiceImpl implements RedisSubService {
             imageResult = FaceUtils.drawFaces(faceResultString,imageResult);
         }
 
+        String poseResultParsed=null;
+//        get pose result ArrayList
+        if(StringUtils.isNotBlank(poseResultString)){
+            poseResultParsed = PoseUtils.getPoseData(poseResultString,imageContent);
+        }
 
         Map<String,String> result = new HashMap<String, String>();
         result.put("image",imageResult);
+        if(StringUtils.isNotBlank(poseResultParsed)){
+            result.put("poseResultParsed",poseResultParsed);
+        }
         JSONObject output = JSONObject.fromObject(result);
+
 
 //       redis 释放资源
         jedis.del(imageID);
         jedis.close();
-//        activeMQ send
+
+//       activeMQ send for video and poseResultParsed
         ActiveMQQueue destination = new ActiveMQQueue("/user/"+ userToken +"/video");
+
         producerService.sendMessage(destination,output.toString());
 
     }

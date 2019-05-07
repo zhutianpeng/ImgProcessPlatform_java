@@ -42,6 +42,7 @@ public class CocoConstants {
     public static int[][] CocoPairsRender = {{1, 2},{1, 5}, {2, 3}, {3, 4}, {5, 6}, {6, 7}, {1, 8}, {8, 9}, {9, 10}, {1, 11},{11, 12}, {12, 13}, {1, 0}, {0, 14}, {14, 16}, {0, 15}, {15, 17}};
 
     public static int[][] CocoPairsAngle = {{2,3,4},{5,6,7},{1,5,6},{1,2,3},{11,12,13},{8,9,10}};
+
 //    Coco数据集，人体标定
 //    Nose = 0
 //    Neck = 1

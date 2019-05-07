@@ -1,5 +1,6 @@
 package com.tiantian.springintejms.utils;
 
+import com.tiantian.springintejms.entity.MathEntity.PointEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.opencv.core.Core;
@@ -7,6 +8,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -48,6 +50,7 @@ public class PoseUtils {
                     // 画图
                     float x = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("x")).get("py/newargs")).get(0).toString());
                     float y = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("y")).get("py/newargs")).get(0).toString());
+
                     Point center = new Point(x*width+0.5, y*height+0.5);
 //                    centers.add(j,center);
                     centerMap.put(j,center);
@@ -76,6 +79,51 @@ public class PoseUtils {
             drawResult = OpencvUtils.MatToBase64(image);
         }
         return drawResult;
+    }
+
+    /**
+     * This static method inputs 结果pose Json 的 String, 原始图片的宽，高
+     * @return ArrayList<HashMap<Integer,PointEntity>> 图片中每个人的每个关节点的位置
+     */
+    public static String getPoseData (String poseResultString, String imageContent) {
+        //返回的结果
+        ArrayList<HashMap<Integer,PointEntity>> poseList = new ArrayList<HashMap<Integer, PointEntity>>();
+
+        JSONArray poseArray = JSONArray.fromObject(poseResultString);
+        if (!poseArray.isEmpty()) {
+            Mat image = OpencvUtils.Base64ToMat(imageContent);
+            float width = image.width();
+            float height = image.height();
+
+            //对每个人的获取
+            for (int i = 0; i < poseArray.size(); i++) {
+                JSONObject human = poseArray.getJSONObject(i);
+                JSONObject bodyParts = JSONObject.fromObject(human.get("body_parts"));
+
+                Set keySet = bodyParts.keySet();
+                HashMap<Integer,PointEntity> centerMap = new HashMap<Integer,PointEntity>();// 中心点的集合
+                // draw point
+                for(int j=0; j<CocoConstants.Background; j++){
+                    if(!keySet.contains(String.valueOf(j))) {
+                        continue;
+                    }
+                    JSONObject bodyPart = bodyParts.getJSONObject(String.valueOf(j));
+                    // 画图
+                    float x = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("x")).get("py/newargs")).get(0).toString());
+                    float y = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("y")).get("py/newargs")).get(0).toString());
+                    float confidence = 1.0f;
+
+                    PointEntity center = new PointEntity(x*width+0.5f, y*height+0.5f,confidence);
+                    centerMap.put(j,center);
+                }
+                poseList.add(centerMap);
+            }
+        }
+
+        JSONArray result = JSONArray.fromObject(poseList);
+        return result.toString();
+
+
     }
 
 }

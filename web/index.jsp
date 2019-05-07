@@ -65,7 +65,7 @@
         var imageData = JSON.parse(message.body);
         img.src = imageData.image;
         //记录每次连接的时间
-        var timestamp = new Date().getTime();
+//        var timestamp = new Date().getTime();
 //        console.log("end=" + timestamp);
     }
 
@@ -165,7 +165,7 @@
 
             //添加状态判断，当为OPEN时，发送消息
             //var message = {};
-            client.send(destination, {'user-token': 123, 'task': 0x02}, data);//发送消息, 0x02 -> 0000 0010
+            client.send(destination, {'user-token': 123, 'task': 0x01}, data);//发送消息, 0x02 -> 0000 0010
 //            console.log("data sent")
         }, 100);
 

@@ -80,5 +80,8 @@ $RECYCLE.BIN/
 *.lnk
 *.class
 
+/.idea/
+.idea/workspace.xml
+
 
 # End of https://www.gitignore.io/api/maven,windows,intellij

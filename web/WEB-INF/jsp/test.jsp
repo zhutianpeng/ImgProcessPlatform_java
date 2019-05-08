@@ -112,7 +112,8 @@
                     </div>
                 </data-box>
                 <data-box :title="'分区介绍'" :dheight="290" :icon="'account'">
-                    <component :is="pageSet.bottom"></component><%--加载底部组件--%>
+                    <%--<component :is="pageSet.bottom"></component>&lt;%&ndash;加载底部组件&ndash;%&gt;--%>
+                    <img id="targetImg" style="height: 100%; width: 50%;"/>
                 </data-box>
             </div>
             <div class="main-right">
@@ -148,11 +149,7 @@
                     </data-box>
                     <data-box :title="'摄像头实时输出画面'" :dheight="400" :boxb="false">
                         <video style="width: 100%; height: 100%" autoplay></video>
-                        <div style="visibility:hidden; width:0; height:0;">
-                            <%--<canvas id="canvas" width="800px" height="600px"></canvas>--%>
-                            <canvas id="canvas" width="400px" height="300px"></canvas>
-                        </div>
-
+                        <canvas id="canvas" width="400px" height="300px" style="visibility:hidden;"></canvas>
                     </data-box>
                 </data-box>
 
@@ -212,6 +209,11 @@
                 app.gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
             }
         }
+        if(jsonData.image){
+            let img = document.getElementById("targetImg");
+            img.src = jsonData.image;
+        }
+
     };
 
     var stompOnError = function (error) {

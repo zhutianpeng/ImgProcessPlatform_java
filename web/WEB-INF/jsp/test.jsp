@@ -163,6 +163,43 @@
 
 <script>
 
+    var client, destination, login, passcode;
+    url = "ws://10.103.238.165:61614";
+    destination = "/queue/video";
+    login = "admin";
+    passcode = "password";
+
+    client = Stomp.client(url);
+
+    var onmessage = function (message) {
+        // let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
+        debugger;
+        let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
+        debugger;
+        // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
+        //
+        // }
+        let singlePerson = poseArray[0];
+        let singleArray = [];
+        for(let key in singlePerson){
+            singleArray.push(key);
+            singleArray.push(singleArray[key].x);
+            singleArray.push(singleArray[key].y);
+        }
+        console.log(singleArray);
+    };
+
+    var onerror = function (error) {
+        alert(error);
+        console.log("aaa");
+    };
+
+    // the client is notified when it is connected to the server.
+    client.connect(login, passcode, function (frame) {
+        userToken = "456";
+        client.subscribe("/user/" + userToken + "/video", onmessage);
+    }, onerror);
+
     var app = new Vue({
         el:'#app',
         data:{
@@ -222,7 +259,7 @@
             this.initPage(); //页面组件初始化
             this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2D.json", {onProgress: UnityProgress});
             this.initCamera(); //初始化摄像头
-            this.initStomp(); //Stomp初始化
+            // this.initStomp(); //Stomp初始化
             // this.initWebSocket(); //初始化WebSocket
 
 
@@ -242,7 +279,7 @@
                 let _this = this;
                 _this.stompInfo.client = Stomp.client(_this.stompInfo.url);
                 _this.stompInfo.client.connect(_this.stompInfo.login, _this.stompInfo.passcode, function (frame) {
-                    let userToken = "123";
+                    let userToken = "996";
                     _this.stompInfo.client.subscribe("/user/" + userToken + "/video", _this.stompOnMessage());
                 }, _this.stompOnError());
                 // setInterval(function(){
@@ -269,6 +306,7 @@
             },
             stompOnError: function(error){ //Stomp出错回调方法
                 alert(error);
+                console.log("error!");
             },
             initCamera:function(){
                 let _this = this;

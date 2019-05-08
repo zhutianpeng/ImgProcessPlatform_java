@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="740d3934-a8a7-4e67-809b-331c0613d354" name="Default" comment="微调">
+    <list default="true" id="740d3934-a8a7-4e67-809b-331c0613d354" name="Default" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/test.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,7 +99,7 @@
         <counts>
           <entry key="java" value="98" />
           <entry key="jsp" value="2165" />
-          <entry key="txt" value="165" />
+          <entry key="txt" value="175" />
           <entry key="xml" value="85" />
         </counts>
       </usages-collector>
@@ -108,7 +107,7 @@
         <counts>
           <entry key="JAVA" value="98" />
           <entry key="JSP" value="2165" />
-          <entry key="PLAIN_TEXT" value="165" />
+          <entry key="PLAIN_TEXT" value="175" />
           <entry key="XML" value="85" />
         </counts>
       </usages-collector>
@@ -122,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1064">
-              <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+            <state relative-caret-position="385">
+              <caret line="52" column="34" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -153,8 +152,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/test.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
+            <state relative-caret-position="114">
+              <caret line="189" column="97" selection-start-line="189" selection-start-column="97" selection-end-line="189" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -229,7 +228,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ConnectionFactory</find>
       <find>Consumer</find>
       <find>consumerMessageListener</find>
       <find>maxActive</find>
@@ -259,6 +257,7 @@
       <find>open</find>
       <find>gameInstance</find>
       <find>destination</find>
+      <find>onme</find>
     </findStrings>
     <replaceStrings>
       <replace>public static Scalar</replace>
@@ -435,7 +434,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557322876915" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557322917353" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.14839134" />
@@ -443,21 +442,22 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Projects\ImgProcessPlatform_java" />
+      <recent name="F:\Projects\ImgProcessPlatform_java\web\WEB-INF\jsp" />
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF" />
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web" />
+      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF\page" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tiantian.springintejms.entity.MathEntity" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Projects\ImgProcessPlatform_java\web\WEB-INF" />
       <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF\css" />
       <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF\js" />
       <recent name="H:\研创展项目\ImgProcessPlatform_java\web" />
       <recent name="E:\shareZTP\祝天鹏\阿里\activeMQ-master\MotionVisionJava\web\tempStaticPage" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tiantian.springintejms.entity.MathEntity" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Projects\ImgProcessPlatform_java\web\WEB-INF\jsp" />
-      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF" />
-      <recent name="H:\研创展项目\ImgProcessPlatform_java\web" />
-      <recent name="H:\研创展项目\ImgProcessPlatform_java\web\WEB-INF\page" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -990,7 +990,7 @@
       <workItem from="1557234333149" duration="3636000" />
       <workItem from="1557244225142" duration="620000" />
       <workItem from="1557275988778" duration="13377000" />
-      <workItem from="1557310869679" duration="3561000" />
+      <workItem from="1557310869679" duration="3815000" />
     </task>
     <task id="LOCAL-00001" summary="整合入PoseEstimation前端内容，写完前后端Stomp交互，等待测试。">
       <created>1557229641709</created>
@@ -1055,7 +1055,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557314309369</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="gitignore">
+      <created>1557322914182</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1557322914182</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1091,7 +1098,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="362686000" />
+    <option name="totallyTimeSpent" value="362940000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1103,9 +1110,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="566" y="25" width="697" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.5368917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10590015" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -1181,7 +1189,8 @@
     <MESSAGE value="前端BUG修复，目前可以从前到AMQ发送图像；JS解析部分重写，完成关节点映射；C#脚本调整。&#10;后端到前端的数据传输还要进行测试。" />
     <MESSAGE value="wkspace" />
     <MESSAGE value="微调" />
-    <option name="LAST_COMMIT_MESSAGE" value="微调" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1404,13 +1413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
-          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -1472,10 +1474,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="52" column="34" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/test.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
+        <state relative-caret-position="114">
+          <caret line="189" column="97" selection-start-line="189" selection-start-column="97" selection-end-line="189" selection-end-column="97" />
         </state>
       </provider>
     </entry>

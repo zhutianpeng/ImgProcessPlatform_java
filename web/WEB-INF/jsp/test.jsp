@@ -192,9 +192,7 @@
         // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
         //
         // }
-        debugger;
         let singlePerson = poseArray[0]; //singlePerson是个JSON对象，key为关节点index值，value为横纵坐标以及置信度所组成的JSON对象
-        debugger;
         let singleArray = [];
         for(let key in singlePerson){
             if(pointMapping[key]){ //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）

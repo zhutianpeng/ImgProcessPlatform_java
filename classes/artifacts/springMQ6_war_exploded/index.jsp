@@ -77,7 +77,7 @@
     // the client is notified when it is connected to the server.
     client.connect(login, passcode, function (frame) {
         //client.send(destination, {}, "hello");//发送消息
-        userToken = "123";
+        userToken = "111";
         client.subscribe("/user/" + userToken + "/video", onmessage);
 //     client.subscribe("/queue/video", onmessage) ;
     }, error_callback);

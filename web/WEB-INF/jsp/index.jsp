@@ -59,6 +59,7 @@
     var error_callback = function (error) {
         // display the error's message header:
         alert(error);
+        console.log("aaa");
     };
 
     // the client is notified when it is connected to the server.

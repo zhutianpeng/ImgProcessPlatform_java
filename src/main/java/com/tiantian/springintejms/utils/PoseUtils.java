@@ -84,7 +84,7 @@ public class PoseUtils {
      * This static method inputs 结果pose Json 的 String, 原始图片的宽，高
      * @return ArrayList<HashMap<Integer,PointEntity>> 图片中每个人的每个关节点的位置
      */
-    public static JSONArray getPoseData (String poseResultString, String imageContent) {
+    public static String getPoseData (String poseResultString, String imageContent) {
         //返回的结果
         ArrayList<JSONObject> poseList = new ArrayList<JSONObject>();
 
@@ -126,7 +126,7 @@ public class PoseUtils {
         }
 
         JSONArray result = JSONArray.fromObject(poseList);
-        return result;
+        return result.toString();
 
 
     }

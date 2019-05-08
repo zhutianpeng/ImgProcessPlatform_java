@@ -147,9 +147,12 @@
                         </el-form>
                     </data-box>
                     <data-box :title="'摄像头实时输出画面'" :dheight="400" :boxb="false">
-                        <%--<canvas style="width: 100%; height: 100%">--%>
-                            <video style="width: 100%; height: 100%" autoplay></video>
-                        <%--</canvas>--%>
+                        <video style="width: 100%; height: 100%" autoplay></video>
+                        <div style="visibility:hidden; width:0; height:0;">
+                            <%--<canvas id="canvas" width="800px" height="600px"></canvas>--%>
+                            <canvas id="canvas" width="400px" height="300px"></canvas>
+                        </div>
+
                     </data-box>
                 </data-box>
 
@@ -169,41 +172,45 @@
     userToken = "123";
 
     var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
-        "0":"10",
-        "1":"8",
-        "2":"14",
-        "3":"15",
-        "4":"16",
-        "5":"11",
-        "6":"12",
-        "7":"13",
-        "8":"1",
-        "9":"2",
-        "10":"3",
-        "11":"4",
-        "12":"5",
-        "13":"6"
+        "0": "10",
+        "1": "8",
+        "2": "14",
+        "3": "15",
+        "4": "16",
+        "5": "11",
+        "6": "12",
+        "7": "13",
+        "8": "1",
+        "9": "2",
+        "10": "3",
+        "11": "4",
+        "12": "5",
+        "13": "6"
     };
     var client = Stomp.client(url);
 
     var stompOnMessage = function (message) {
         let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
-        let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
-        // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
-        //
-        // }
-        let singlePerson = poseArray[0]; //singlePerson是个JSON对象，key为关节点index值，value为横纵坐标以及置信度所组成的JSON对象
-        let singleArray = [];
-        for(let key in singlePerson){
-            if(pointMapping[key]){ //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
-                singleArray.push(pointMapping[key]);
-                singleArray.push(singleArray[key].x);
-                singleArray.push(singleArray[key].y);
+        if (jsonData.poseResultParsed) {
+            let poseArray = JSON.parse(jsonData.poseResultParsed); //单帧二维坐标点数据
+            // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
+            //
+            // }
+
+            let singlePerson = poseArray[0]; //singlePerson是个JSON对象，key为关节点index值，value为横纵坐标以及置信度所组成的JSON对象
+
+            let singleArray = [];
+            for (let key in singlePerson) {
+                if (pointMapping[key]) { //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
+                    singleArray.push(pointMapping[key]);
+                    singleArray.push(singlePerson[key].x);
+                    singleArray.push(singlePerson[key].y);
+                }
             }
-        }
-        console.log(singleArray);
-        if(poseData){ //数据不为空
-            gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
+            console.log(singleArray);
+            if (singleArray) { //数据不为空
+                app.gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
+            }
         }
     };
 
@@ -341,16 +348,16 @@
                     })
                     .catch(function(err) { console.log(err.name + ": " + err.message); }); // 总是在最后检查错误
             },
-            transImage:function (video) {
-                console.log("进入transImage方法");
+            transImage: function (video) {
+//                console.log("进入transImage方法");
                 let _this = this;
-                let canvas = document.createElement("canvas");
-                let scale = 1; //缩放比例
-                canvas.width = video.videoWidth * scale;
-                canvas.height = video.videoHeight * scale;
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                let canvas = document.querySelector('canvas');
+//                let scale = 1; //缩放比例
+//                canvas.width = video.videoWidth * scale;
+//                canvas.height = video.videoHeight * scale;
+                canvas.getContext('2d').drawImage(video, 0, 0, 400,300);
                 let image = canvas.toDataURL('image/jpeg');
-                if(image != null){
+                if (image != null) {
                     client.send(destination, {'user-token': userToken, 'task': 0x01}, image); //发送消息
                     // _this.sendMsg.image = image; //填充base64编码后的视频帧
                     // this.socket.send(JSON.stringify(_this.sendMsg)); //通过WebSocket发送到后台
@@ -409,8 +416,8 @@
                     _this.button2.buttonType = 'danger';
                     _this.myTimer = setInterval(function(){
                         _this.transImage(document.querySelector('video'));
-                    }, 50); //50ms发送一次
-                }else{
+                    }, 100); //50ms发送一次
+                } else {
                     clearInterval(_this.myTimer);
                     _this.button2.buttonType = 'success';
                 }

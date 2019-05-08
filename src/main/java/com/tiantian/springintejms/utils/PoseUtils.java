@@ -1,6 +1,5 @@
 package com.tiantian.springintejms.utils;
 
-import com.tiantian.springintejms.entity.MathEntity.PointEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.opencv.core.Core;
@@ -87,7 +86,7 @@ public class PoseUtils {
      */
     public static String getPoseData (String poseResultString, String imageContent) {
         //返回的结果
-        ArrayList<HashMap<Integer,JSONObject>> poseList = new ArrayList<HashMap<Integer, JSONObject>>();
+        ArrayList<JSONObject> poseList = new ArrayList<JSONObject>();
 
         JSONArray poseArray = JSONArray.fromObject(poseResultString);
         if (!poseArray.isEmpty()) {
@@ -101,7 +100,7 @@ public class PoseUtils {
                 JSONObject bodyParts = JSONObject.fromObject(human.get("body_parts"));
 
                 Set keySet = bodyParts.keySet();
-                HashMap<Integer, JSONObject> centerMap = new HashMap<Integer, JSONObject>();// 中心点的集合
+                HashMap<String, JSONObject> centerMap = new HashMap<String, JSONObject>();// 中心点的集合
                 // draw point
                 for(int j=0; j<CocoConstants.Background; j++){
                     if(!keySet.contains(String.valueOf(j))) {
@@ -111,12 +110,18 @@ public class PoseUtils {
                     // 画图
                     float x = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("x")).get("py/newargs")).get(0).toString());
                     float y = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("y")).get("py/newargs")).get(0).toString());
-                    float confidence = 1.0f;
+                    float confidence = Float.parseFloat(JSONArray.fromObject(JSONObject.fromObject(bodyPart.get("score")).get("py/newargs")).get(0).toString());;
 
-                    PointEntity center = new PointEntity(x*width+0.5f, y*height+0.5f, confidence);
-                    centerMap.put(j, JSONObject.fromObject(center));
+//                    PointEntity center = new PointEntity(x*width+0.5f, y*height+0.5f, confidence);
+                    JSONObject centerObject = new JSONObject();
+                    centerObject.put("x",x*width+0.5f);
+                    centerObject.put("y",y*width+0.5f);
+                    centerObject.put("confidence",confidence);
+
+                    centerMap.put(String.valueOf(j), centerObject);
                 }
-                poseList.add(centerMap);
+                JSONObject centerMapObject = JSONObject.fromObject(centerMap);
+                poseList.add(centerMapObject);
             }
         }
 

@@ -28,7 +28,8 @@
         </div>
     </div>
     <div style="visibility:hidden; width:0; height:0;">
-        <canvas id="canvas" width="800px" height="600px"></canvas>
+        <%--<canvas id="canvas" width="800px" height="600px"></canvas>--%>
+        <canvas id="canvas" width="400px" height="300px"></canvas>
     </div>
     <div class="row clearfix">
         <div class="col-md-6 column">
@@ -65,8 +66,8 @@
         var imageData = JSON.parse(message.body);
         img.src = imageData.image;
         //记录每次连接的时间
-//        var timestamp = new Date().getTime();
-//        console.log("end=" + timestamp);
+        var timestamp = new Date().getTime();pose
+        console.log("end=" + timestamp);
     }
 
     var error_callback = function (error) {
@@ -159,7 +160,7 @@
 
     timer = setInterval(
         function () {
-            ctx.drawImage(video, 0, 0, 800, 600);
+            ctx.drawImage(video, 0, 0, 400, 300);
             var data = canvas.toDataURL('image/jpeg', 1.0);    //将获取到的图像转换为base64编码
             //newblob = dataURItoBlob(data);
 

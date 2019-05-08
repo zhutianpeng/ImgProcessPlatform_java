@@ -54,7 +54,7 @@
         //记录每次连接的时间
         var timestamp = new Date().getTime();
 //        console.log("end=" + timestamp);
-    }
+    };
 
     var error_callback = function (error) {
         // display the error's message header:

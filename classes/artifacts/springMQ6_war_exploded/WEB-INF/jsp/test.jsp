@@ -14,9 +14,6 @@
     <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script><%--录制实时视频用--%>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script><!-- 引入element组件库 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"><!-- 引入element样式 -->
-    <%--<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>--%>
-    <%--<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">--%>
-    <%--<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">--%>
     <script src="${pageContext.request.contextPath}/newJs/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/webGL/TemplateData/UnityProgress.js"></script>
     <script src="${pageContext.request.contextPath}/webGL/Build/UnityLoader.js"></script>
@@ -142,6 +139,7 @@
                             </el-form-item>
                             <el-form-item>
                                 <el-button :type="button.buttonType" @click="change"><span v-if="button.enable">禁用脚本</span><span v-if="!button.enable">激活脚本</span></el-button>
+                                <el-button :type="button2.buttonType" @click="changeTrans"><span v-if="button2.enable">中止传输</span><span v-if="!button2.enable">开始传输</span></el-button>
                                 <%--<el-button type="success" @click="sendWS">发送WS测试</el-button>--%>
                             </el-form-item>
 
@@ -163,42 +161,60 @@
 
 <script>
 
-    var client, destination, login, passcode;
+    var destination, login, passcode, userToken;
     url = "ws://10.103.238.165:61614";
     destination = "/queue/video";
     login = "admin";
     passcode = "password";
+    userToken = "13141214345";
 
-    client = Stomp.client(url);
+    var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
+        "0":"10",
+        "1":"8",
+        "2":"14",
+        "3":"15",
+        "4":"16",
+        "5":"11",
+        "6":"12",
+        "7":"13",
+        "8":"1",
+        "9":"2",
+        "10":"3",
+        "11":"4",
+        "12":"5",
+        "13":"6"
+    };
+    var client = Stomp.client(url);
 
-    var onmessage = function (message) {
-        // let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
-        debugger;
+    var stompOnMessage = function (message) {
+        let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
+
         let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
-        debugger;
         // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
         //
         // }
-        let singlePerson = poseArray[0];
+        let singlePerson = poseArray[0]; //singlePerson是个JSON对象，key为关节点index值，value为横纵坐标以及置信度所组成的JSON对象
         let singleArray = [];
         for(let key in singlePerson){
-            singleArray.push(key);
-            singleArray.push(singleArray[key].x);
-            singleArray.push(singleArray[key].y);
+            if(pointMapping[key]){ //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
+                singleArray.push(pointMapping[key]);
+                singleArray.push(singleArray[key].x);
+                singleArray.push(singleArray[key].y);
+            }
         }
         console.log(singleArray);
     };
 
-    var onerror = function (error) {
+    var stompOnError = function (error) {
         alert(error);
-        console.log("aaa");
+        console.log("Stomp连接出错！" + error);
     };
 
     // the client is notified when it is connected to the server.
     client.connect(login, passcode, function (frame) {
-        userToken = "456";
-        client.subscribe("/user/" + userToken + "/video", onmessage);
-    }, onerror);
+        client.subscribe("/user/" + userToken + "/video", stompOnMessage);
+    }, stompOnError);
+
 
     var app = new Vue({
         el:'#app',
@@ -214,6 +230,10 @@
             button:{
                 enable:true,
                 buttonType:'danger',
+            },
+            button2:{
+                enable:false,
+                buttonType:'success',
             },
             characterOptions:[{
                 label:'男性角色',
@@ -253,11 +273,13 @@
                 image:'',
                 task:1
             },
-            confidenceArray:[]
+            confidenceArray:[],
+            myTimer:'' //定时器
         },
         mounted: function(){
             this.initPage(); //页面组件初始化
-            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2D.json", {onProgress: UnityProgress});
+            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2Dv2.json", {onProgress: UnityProgress});
+
             this.initCamera(); //初始化摄像头
             // this.initStomp(); //Stomp初始化
             // this.initWebSocket(); //初始化WebSocket
@@ -282,13 +304,11 @@
                     let userToken = "996";
                     _this.stompInfo.client.subscribe("/user/" + userToken + "/video", _this.stompOnMessage());
                 }, _this.stompOnError());
-                // setInterval(function(){
-                //     _this.transImage(document.querySelector('video'));
-                // }, 50); //50ms发送一次
             },
             stompOnMessage: function(message){ //Stomp接收到消息回调方法 TODO 计时以检验效率
                 let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
-                let poseArray = JSON.parse(jsonData.poseResultParsed); //单帧二维坐标点数据
+
+                let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
                 // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
                 //
                 // }
@@ -300,13 +320,14 @@
                     singleArray.push(singleArray[key].y);
                 }
                 console.log(singleArray);
+
                 // if(poseData){ //数据不为空
-                //     this.gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
+                //     gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
                 // }
             },
             stompOnError: function(error){ //Stomp出错回调方法
                 alert(error);
-                console.log("error!");
+                console.log("Stomp出错！" + error);
             },
             initCamera:function(){
                 let _this = this;
@@ -317,7 +338,6 @@
                         video.srcObject = mediaStream;
                     })
                     .catch(function(err) { console.log(err.name + ": " + err.message); }); // 总是在最后检查错误
-
             },
             transImage:function (video) {
                 console.log("进入transImage方法");
@@ -329,7 +349,7 @@
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
                 let image = canvas.toDataURL('image/jpeg');
                 if(image != null){
-                    _this.stompInfo.client.send(_this.stompInfo.destination, {'user-token': 123, 'task': 0x03}, image); //发送消息
+                    client.send(destination, {'user-token': userToken, 'task': 0x03}, image); //发送消息
                     // _this.sendMsg.image = image; //填充base64编码后的视频帧
                     // this.socket.send(JSON.stringify(_this.sendMsg)); //通过WebSocket发送到后台
                     console.log(image);
@@ -337,6 +357,7 @@
             },
             change:function(){ //控制WebGL激活/禁用脚本
                 this.gameInstance.SendMessage("Philip", "ChangeState");
+                console.log("脚本状态改变！");
                 this.button.enable = !this.button.enable;
                 if(this.button.enable){
                     this.button.buttonType = 'danger';
@@ -370,7 +391,7 @@
             onMessage: function(event){
                 if(event.data){
                     console.log("接收到来自后台的消息：" + event.data);
-                    this.gameInstance.SendMessage("Philip", "GetPose", event.data); //调用Unity内部方法，将姿态数据传入
+                    gameInstance.SendMessage("Philip", "GetPose", event.data); //调用Unity内部方法，将姿态数据传入
                 }
             },
             onError: function(){
@@ -378,6 +399,19 @@
             },
             onClose: function(){
                 console.log("WebSocket关闭！");
+            },
+            changeTrans:function () { //按钮调用，用于启动图像传输
+                let _this = this;
+                _this.button2.enable = !_this.button2.enable;
+                if(_this.button2.enable){
+                    _this.button2.buttonType = 'danger';
+                    _this.myTimer = setInterval(function(){
+                        _this.transImage(document.querySelector('video'));
+                    }, 50); //50ms发送一次
+                }else{
+                    clearInterval(_this.myTimer);
+                    _this.button2.buttonType = 'success';
+                }
             },
 
 

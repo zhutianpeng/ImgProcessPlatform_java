@@ -8,7 +8,7 @@ import org.opencv.core.Point;
 import org.opencv.highgui.Highgui;
 
 public class OpencvUtils {
-    public static final  String dllPath = "E:\\opencv\\build\\java\\x64\\opencv_java2413.dll";
+    public static final  String dllPath = "D:\\opencv\\build\\java\\x64\\opencv_java2413.dll";
     static{
         System.load(dllPath);
     }

@@ -54,15 +54,17 @@ public class RedisSubServiceImpl implements RedisSubService {
 
         String poseResultParsed=null;
 //        get pose result ArrayList
-        if(StringUtils.isNotBlank(poseResultString)){
+        if(StringUtils.isNotBlank(poseResultString) && !poseResultString.equals("[]")){
             poseResultParsed = PoseUtils.getPoseData(poseResultString,imageContent);
         }
 
         Map<String,String> result = new HashMap<String, String>();
         result.put("image",imageResult);
+
         if(StringUtils.isNotBlank(poseResultParsed)){
             result.put("poseResultParsed",poseResultParsed);
         }
+
         JSONObject output = JSONObject.fromObject(result);
 
 

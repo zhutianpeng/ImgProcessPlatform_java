@@ -10,7 +10,6 @@
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
-    <!--welcome pages-->
     <welcome-file-list>
         <!--<welcome-file>index.jsp</welcome-file>-->
         <welcome-file>/WEB-INF/jsp/test.jsp</welcome-file>

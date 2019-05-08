@@ -4,6 +4,7 @@ import com.tiantian.springintejms.service.ProducerService;
 import com.tiantian.springintejms.service.RedisSubService;
 import com.tiantian.springintejms.utils.FaceUtils;
 import com.tiantian.springintejms.utils.PoseUtils;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.lang.StringUtils;
@@ -52,7 +53,7 @@ public class RedisSubServiceImpl implements RedisSubService {
             imageResult = FaceUtils.drawFaces(faceResultString,imageResult);
         }
 
-        String poseResultParsed=null;
+        JSONArray poseResultParsed=null;
 //        get pose result ArrayList
         if(StringUtils.isNotBlank(poseResultString) && !poseResultString.equals("[]")){
             poseResultParsed = PoseUtils.getPoseData(poseResultString,imageContent);
@@ -61,8 +62,8 @@ public class RedisSubServiceImpl implements RedisSubService {
         Map<String,String> result = new HashMap<String, String>();
         result.put("image",imageResult);
 
-        if(StringUtils.isNotBlank(poseResultParsed)){
-            result.put("poseResultParsed",poseResultParsed);
+        if(poseResultParsed.isEmpty()){
+            result.put("poseResultParsed",poseResultParsed.toString());
         }
 
         JSONObject output = JSONObject.fromObject(result);

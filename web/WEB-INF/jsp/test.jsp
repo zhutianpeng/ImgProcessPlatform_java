@@ -188,8 +188,7 @@
 
     var stompOnMessage = function (message) {
         let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
-
-        let poseArray = JSON.parse(jsonData.poseResultParsed); //单帧二维坐标点数据
+        let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
         // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
         //
         // }

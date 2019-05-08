@@ -166,7 +166,7 @@
     destination = "/queue/video";
     login = "admin";
     passcode = "password";
-    userToken = "13141214345";
+    userToken = "123";
 
     var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
         "0":"10",
@@ -301,7 +301,7 @@
                 let _this = this;
                 _this.stompInfo.client = Stomp.client(_this.stompInfo.url);
                 _this.stompInfo.client.connect(_this.stompInfo.login, _this.stompInfo.passcode, function (frame) {
-                    let userToken = "996";
+                    let userToken = "123";
                     _this.stompInfo.client.subscribe("/user/" + userToken + "/video", _this.stompOnMessage());
                 }, _this.stompOnError());
             },
@@ -349,7 +349,7 @@
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
                 let image = canvas.toDataURL('image/jpeg');
                 if(image != null){
-                    client.send(destination, {'user-token': userToken, 'task': 0x03}, image); //发送消息
+                    client.send(destination, {'user-token': userToken, 'task': 0x01}, image); //发送消息
                     // _this.sendMsg.image = image; //填充base64编码后的视频帧
                     // this.socket.send(JSON.stringify(_this.sendMsg)); //通过WebSocket发送到后台
                     console.log(image);

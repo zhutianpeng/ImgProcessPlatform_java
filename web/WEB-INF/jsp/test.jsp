@@ -149,7 +149,7 @@
                     </data-box>
                     <data-box :title="'摄像头实时输出画面'" :dheight="400" :boxb="false">
                         <video style="width: 100%; height: 100%" autoplay></video>
-                        <canvas id="canvas" width="400px" height="300px" style="visibility:hidden;"></canvas>
+                        <canvas id="targetCanvas" width="400px" height="300px" style="visibility:hidden;"></canvas>
                     </data-box>
                 </data-box>
 
@@ -169,20 +169,20 @@
     userToken = "123";
 
     var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
-        "0": "10",
-        "1": "8",
-        "2": "14",
-        "3": "15",
-        "4": "16",
-        "5": "11",
-        "6": "12",
-        "7": "13",
-        "8": "1",
-        "9": "2",
-        "10": "3",
-        "11": "4",
-        "12": "5",
-        "13": "6"
+        "0": 10,
+        "1": 8,
+        "2": 14,
+        "3": 15,
+        "4": 16,
+        "5": 11,
+        "6": 12,
+        "7": 13,
+        "8": 1,
+        "9": 2,
+        "10": 3,
+        "11": 4,
+        "12": 5,
+        "13": 6
     };
     var client = Stomp.client(url);
 
@@ -200,12 +200,12 @@
             for (let key in singlePerson) {
                 if (pointMapping[key]) { //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
                     singleArray.push(pointMapping[key]);
-                    singleArray.push(singlePerson[key].x);
-                    singleArray.push(singlePerson[key].y);
+                    singleArray.push(singlePerson[key].x - 150);
+                    singleArray.push(400 - singlePerson[key].y);
                 }
             }
-            console.log(singleArray);
             if (singleArray) { //数据不为空
+                console.log(singleArray.toString());
                 app.gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
             }
         }
@@ -289,10 +289,9 @@
         },
         mounted: function(){
             this.initPage(); //页面组件初始化
-            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2Dv2.json", {onProgress: UnityProgress});
+            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2Dv5.json", {onProgress: UnityProgress});
 
             this.initCamera(); //初始化摄像头
-            // this.initStomp(); //Stomp初始化
             // this.initWebSocket(); //初始化WebSocket
 
 
@@ -308,38 +307,6 @@
                 this.chosenScene = this.sceneOptions[0].value; //初始选择户外场景
                 this.chosenModule = this.moduleOptions[1].value; //初始选择功能分区
             },
-            initStomp:function(){ //Stomp初始化
-                let _this = this;
-                _this.stompInfo.client = Stomp.client(_this.stompInfo.url);
-                _this.stompInfo.client.connect(_this.stompInfo.login, _this.stompInfo.passcode, function (frame) {
-                    let userToken = "123";
-                    _this.stompInfo.client.subscribe("/user/" + userToken + "/video", _this.stompOnMessage());
-                }, _this.stompOnError());
-            },
-            stompOnMessage: function(message){ //Stomp接收到消息回调方法 TODO 计时以检验效率
-                let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
-
-                let poseArray = jsonData.poseResultParsed; //单帧二维坐标点数据
-                // for(let i = 0; i < poseArray.length;i ++){ //TODO 多人场景？
-                //
-                // }
-                let singlePerson = poseArray[0];
-                let singleArray = [];
-                for(let key in singlePerson){
-                    singleArray.push(key);
-                    singleArray.push(singleArray[key].x);
-                    singleArray.push(singleArray[key].y);
-                }
-                console.log(singleArray);
-
-                // if(poseData){ //数据不为空
-                //     gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
-                // }
-            },
-            stompOnError: function(error){ //Stomp出错回调方法
-                alert(error);
-                console.log("Stomp出错！" + error);
-            },
             initCamera:function(){
                 let _this = this;
                 let constraints = { video: true };
@@ -353,7 +320,7 @@
             transImage: function (video) {
 //                console.log("进入transImage方法");
                 let _this = this;
-                let canvas = document.querySelector('canvas');
+                let canvas = document.getElementById('targetCanvas');
 //                let scale = 1; //缩放比例
 //                canvas.width = video.videoWidth * scale;
 //                canvas.height = video.videoHeight * scale;

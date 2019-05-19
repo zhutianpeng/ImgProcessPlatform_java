@@ -192,7 +192,7 @@
         "12": 2,
         "13": 16
     };
-    // var client = Stomp.client(url); TODO 暂时关闭
+    var client = Stomp.client(url); TODO 暂时关闭
 
     var stompOnMessage = function (message) {
         let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
@@ -231,10 +231,10 @@
         console.log("Stomp连接出错！" + error);
     };
 
-    // // the client is notified when it is connected to the server. TODO 暂时关闭
-    // client.connect(login, passcode, function (frame) {
-    //     client.subscribe("/user/" + userToken + "/video", stompOnMessage);
-    // }, stompOnError);
+    // the client is notified when it is connected to the server. TODO 暂时关闭
+    client.connect(login, passcode, function (frame) {
+        client.subscribe("/user/" + userToken + "/video", stompOnMessage);
+    }, stompOnError);
 
 
     var app = new Vue({

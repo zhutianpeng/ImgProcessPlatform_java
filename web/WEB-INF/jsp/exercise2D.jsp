@@ -116,6 +116,7 @@
             </div>
             <div class="main-center">
                 <data-box :title="'动作参数展示区'" :dheight="300">
+                    <span id="GetData" style="font-size:6px"></span>
                 </data-box>
                 <data-box :title="'实时Unity3D动画'" :dheight="500" :icon="'account'" :boxb="false">
                     <div>
@@ -140,6 +141,10 @@
 </div>
 
 <script>
+
+    $.get("data/get?_" + $.now(), function (r) {
+        document.getElementById("GetData").innerHTML = r;
+    })
 
     var destination, login, passcode, userToken;
     url = "ws://10.103.238.165:61614";

@@ -13,8 +13,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -134,13 +134,29 @@
             <version>2.2.3</version>
             <classifier>jdk15</classifier><!-- 指定jdk版本 -->
         </dependency>
-
+<!--opencv-->
         <dependency>
             <groupId>org.opencv</groupId>
             <artifactId>opencv</artifactId>
             <version>2.4.13</version>
             <systemPath>D:/opencv/build/java/opencv-2413.jar</systemPath>
             <scope>system</scope>
+        </dependency>
+<!--mysql-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.1.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
         </dependency>
 
     </dependencies>

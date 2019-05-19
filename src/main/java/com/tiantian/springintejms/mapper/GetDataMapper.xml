@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiantian.springintejms.mapper.GetDataMapper">
+
+    <select id="getData" resultType="String">
+        select movetype_data from movetype where movetype_id = "16"
+    </select>
+
+</mapper>

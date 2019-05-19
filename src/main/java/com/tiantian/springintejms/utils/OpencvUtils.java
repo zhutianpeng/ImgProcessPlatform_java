@@ -1,11 +1,11 @@
 package com.tiantian.springintejms.utils;
-
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.tiantian.springintejms.entity.MathEntity.VectorEntity;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.core.Point;
 import org.opencv.highgui.Highgui;
+
+import java.util.Base64;
 
 public class OpencvUtils {
     public static final  String dllPath = "D:\\opencv\\build\\java\\x64\\opencv_java2413.dll";
@@ -14,7 +14,7 @@ public class OpencvUtils {
     }
     public static Mat Base64ToMat(String s){
 //      base64转mat，with 'data:image/jpeg;base64,' this head
-        byte[] data = Base64.decode(s.split(",")[1]);
+        byte[] data = Base64.getDecoder().decode(s.split(",")[1]);
         Mat image = Highgui.imdecode(new MatOfByte(data), Highgui.CV_LOAD_IMAGE_UNCHANGED);
         return image;
     }
@@ -23,7 +23,7 @@ public class OpencvUtils {
 //     mat转base64, with 'data:image/jpeg;base64,' this head
         MatOfByte matOfByte = new MatOfByte();
         Highgui.imencode(".jpg", mat, matOfByte);
-        String dataString = new String(Base64.encode(matOfByte.toArray()));
+        String dataString = Base64.getEncoder().encodeToString(matOfByte.toArray());
         dataString = "data:image/jpeg;base64," + dataString;
         return dataString;
     }

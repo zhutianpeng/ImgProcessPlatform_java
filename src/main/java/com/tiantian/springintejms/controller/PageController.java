@@ -16,9 +16,19 @@ public class PageController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/free")
     public ModelAndView test(){
-        return new ModelAndView("test");
+        return new ModelAndView("free");
+    }
+
+    @RequestMapping("/exercise3D")
+    public ModelAndView exercise3D(){
+        return new ModelAndView("exercise3D");
+    }
+
+    @RequestMapping("/exercise2D")
+    public ModelAndView exercise2D(){
+        return new ModelAndView("exercise2D");
     }
 
 }

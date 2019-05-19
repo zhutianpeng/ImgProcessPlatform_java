@@ -1,17 +1,34 @@
 //数据面板子组件
 var DataBoard = {
-    template: `<data-box :title="''" :dheight="800">
-                    <data-box :title="'健身数据面板'" :dheight="400" :icon="'account'" :boxb="false">
-
-                        <ve-line :data="pieChart.data" :extend="pieChart.extend" :height="'350px'"></ve-line>
-                    </data-box>
-                    <data-box :title="'健身数据面板'" :dheight="350" :icon="'account'" :boxb="false">
-                        <ve-line :data="lineChart.data" :extend="lineChart.extend"></ve-line>
+    template: `<data-box :title="'健身数据面板'" :dheight="800">
+                    <data-box :title="'关键关节点置信度统计'" :dheight="400" :icon="'account'" :boxb="false">
+                        <ve-line :data="poseChart.data" :extend="poseChart.extend"></ve-line>
                     </data-box>
                 </data-box>`,
+    props:['pose'],
     data:function () {
         return {
-            pieChart: {
+            pointMapping:{
+                0:'鼻子',
+                1:'脖子',
+                2:'右肩',
+                3:'右肘',
+                4:'右腕',
+                5:'左肩',
+                6:'左肘',
+                7:'左腕',
+                8:'右臀',
+                9:'右膝',
+                10:'右踝',
+                11:'左臀',
+                12:'左膝',
+                13:'左踝',
+                14:'右眼',
+                15:'左眼',
+                16:'右耳',
+                17:'左耳'
+            },
+            poseChart: {
                 extend:{
                     legend:{
                         textStyle: {color: '#fff'},
@@ -23,37 +40,42 @@ var DataBoard = {
                     }
                 },
                 data: {
-                    columns: ['日期', '销售额'],
-                    rows: [
-                        {'日期': '1月1日', '销售额': 123},
-                        {'日期': '1月2日', '销售额': 1223},
-                        {'日期': '1月3日', '销售额': 2123},
-                        {'日期': '1月4日', '销售额': 4123},
-                        {'日期': '1月5日', '销售额': 3123},
-                        {'日期': '1月6日', '销售额': 7123}
-                    ]
+                    columns: ['关节点名称', '置信度'],
+                    rows: []
                 }
-            },
-            lineChart: {
-                extend:{
-                    textStyle: {color: '#fff'},
-                },
-                data: {
-                    columns: ['日期', '销售额'],
-                    rows: [
-                        {'日期': '1月1日', '销售额': 123},
-                        {'日期': '1月2日', '销售额': 1223},
-                        {'日期': '1月3日', '销售额': 2123},
-                        {'日期': '1月4日', '销售额': 4123},
-                        {'日期': '1月5日', '销售额': 3123},
-                        {'日期': '1月6日', '销售额': 7123}
-                    ]
-                }
-            },
+            }
         }
     },
     components:{
         dataBox: DataBox
+    },
+    watch:{
+        pose:{
+            deep: true,
+            handler: function (newPoseData) {
+                this.refreshData(newPoseData);
+            }
+        }
+    },
+    methods:{
+        refreshData: function (poseData) {
+            console.log("data update")
+            let poseTemp = []; //该数组用于暂存rows数据
+            for(let i = 0; i < 18; i++){
+                if(poseData[i.toString()]){
+                    poseTemp.push({
+                        '关节点': this.pointMapping[i],
+                        '置信度': poseData[i.toString()]
+                    })
+                }else{
+                    poseTemp.push({
+                        '关节点': this.pointMapping[i],
+                        '置信度': 0
+                    })
+                }
+            }
+            this.poseChart.data.rows = poseTemp;
+        }
     }
 };
 

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tzh
-  Date: 2019/4/24
-  Time: 9:06
+  Date: 2019/5/19
+  Time: 21:04
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,7 @@
     <title>姿态分析展示平台</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/webGL/TemplateData/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- 引入vue框架 -->
-    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script><%--录制实时视频用--%>
+    <%--<script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>&lt;%&ndash;录制实时视频用&ndash;%&gt;--%>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script><!-- 引入element组件库 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"><!-- 引入element样式 -->
     <script src="${pageContext.request.contextPath}/newJs/jquery-3.3.1.min.js"></script>
@@ -90,11 +90,19 @@
 </style>
 
 <body>
-<div class="data-page" id="app">
+<div class="data-page" id="exercise3">
+    <el-menu style="border-bottom: none" :default-active="'2'" class="el-menu-demo" mode="horizontal" background-color="black" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu-item index="1"><a href="${pageContext.request.contextPath}/free">自由锻炼</a></el-menu-item>
+        <el-submenu index="2">
+            <template slot="title">康复健身</template>
+            <el-menu-item index="exercise2D"><a href="${pageContext.request.contextPath}/exercise2D">实时2D</a></el-menu-item>
+            <el-menu-item index="exercise3D"><a href="${pageContext.request.contextPath}/exercise3D">离线3D</a></el-menu-item>
+        </el-submenu>
+    </el-menu>
     <div class="header">
         <div class="bg-header">
             <div class="t-title">Pose Estimation</div>
-            <div class="t-title">{{pageSet.title}}</div>
+            <div class="t-title">离线3D康复健身</div>
         </div>
     </div>
     <%--<topnav></topnav>--%>
@@ -103,7 +111,19 @@
         <%--</div>--%>
         <div class="data-main">
             <div class="main-left">
-                <component :is="pageSet.left"></component><%--加载左侧组件--%>
+                <data-box :title="''" :dheight="800">
+                    <data-box :title="'操作面板'" :dheight="400" :icon="'account'" :boxb="false">
+                    <div style="padding: 10%">
+                        <el-button type="primary">录制视频</el-button>
+                        <el-button type="success">上传视频</el-button>
+                    </div>
+
+
+                    </data-box>
+                    <data-box :title="'数据展示区'" :dheight="400" :icon="'account'" :boxb="false">
+                        <ve-line></ve-line>
+                    </data-box>
+                </data-box>
             </div>
             <div class="main-center">
                 <data-box :title="'实时Unity3D动画'" :dheight="500" :icon="'account'" :boxb="false">
@@ -111,41 +131,10 @@
                         <div id="gameContainer" style="width: 100%; height: 100%"></div>
                     </div>
                 </data-box>
-                <data-box :title="'分区介绍'" :dheight="290" :icon="'account'">
-                    <%--<component :is="pageSet.bottom"></component>&lt;%&ndash;加载底部组件&ndash;%&gt;--%>
-                    <img id="targetImg" style="height: 100%; width: 50%;"/>
-                </data-box>
             </div>
             <div class="main-right">
                 <data-box :title="''" :dheight="800">
-                    <data-box :title="'配置面板'" :dheight="400" :boxb="false">
-                        <el-form style="padding: 20px;" label-position="left" label-width="150px">
-                            <el-form-item label="切换分区">
-                                <el-select v-model="chosenModule">
-                                    <el-option v-for="option in moduleOptions" :key="option.value" :label="option.label" :value="option.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="切换角色">
-                                <el-select v-model="chosenCharacter">
-                                    <el-option v-for="option in characterOptions" :key="option.value" :label="option.label" :value="option.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="切换场景">
-                                <el-select v-model="chosenScene">
-                                    <el-option v-for="option in sceneOptions" :key="option.value" :label="option.label" :value="option.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button :type="button.buttonType" @click="change"><span v-if="button.enable">禁用脚本</span><span v-if="!button.enable">激活脚本</span></el-button>
-                                <el-button :type="button2.buttonType" @click="changeTrans"><span v-if="button2.enable">中止传输</span><span v-if="!button2.enable">开始传输</span></el-button>
-                                <%--<el-button type="success" @click="sendWS">发送WS测试</el-button>--%>
-                            </el-form-item>
-
-
-                        </el-form>
+                    <data-box :title="'动作选择面板'" :dheight="400" :boxb="false">
                     </data-box>
                     <data-box :title="'摄像头实时输出画面'" :dheight="400" :boxb="false">
                         <video style="width: 100%; height: 100%" autoplay></video>
@@ -171,20 +160,20 @@
     var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
         "0": 10,
         "1": 8,
-        "2": 14,
-        "3": 15,
-        "4": 16,
-        "5": 11,
-        "6": 12,
+        "2": 11,
+        "3": 12,
+        "4": 13,
+        "5": 14,
+        "6": 15,
         "7": 13,
-        "8": 1,
-        "9": 2,
-        "10": 3,
-        "11": 4,
-        "12": 5,
-        "13": 6
+        "8": 4,
+        "9": 5,
+        "10": 6,
+        "11": 1,
+        "12": 2,
+        "13": 16
     };
-    var client = Stomp.client(url);
+    // var client = Stomp.client(url); TODO 暂时关闭
 
     var stompOnMessage = function (message) {
         let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
@@ -198,10 +187,12 @@
 
             let singleArray = [];
             for (let key in singlePerson) {
+                app.poseData[key] = singlePerson[key].c; //填充置信度信息
                 if (pointMapping[key]) { //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
                     singleArray.push(pointMapping[key]);
                     singleArray.push(singlePerson[key].x - 150);
                     singleArray.push(400 - singlePerson[key].y);
+
                 }
             }
             if (singleArray) { //数据不为空
@@ -221,74 +212,25 @@
         console.log("Stomp连接出错！" + error);
     };
 
-    // the client is notified when it is connected to the server.
-    client.connect(login, passcode, function (frame) {
-        client.subscribe("/user/" + userToken + "/video", stompOnMessage);
-    }, stompOnError);
+    // // the client is notified when it is connected to the server. TODO 暂时关闭
+    // client.connect(login, passcode, function (frame) {
+    //     client.subscribe("/user/" + userToken + "/video", stompOnMessage);
+    // }, stompOnError);
 
 
-    var app = new Vue({
-        el:'#app',
+    var exercise3D = new Vue({
+        el:'#exercise3',
         data:{
-            stompInfo:{
-                url: "ws://10.103.238.165:61614",
-                destination: "/queue/video",
-                login: "admin",
-                passcode: "password",
-                client:''
-            },
             gameInstance:'',
-            button:{
-                enable:true,
-                buttonType:'danger',
-            },
-            button2:{
-                enable:false,
-                buttonType:'success',
-            },
-            characterOptions:[{
-                label:'男性角色',
-                value:'boy'
-            },{
-                label:'女性角色',
-                value:'girl'
-            }],
-            sceneOptions:[{
-                label:'户外场景',
-                value:'outdoor'
-            },{
-                label:'室内场景',
-                value:'indoor'
-            }],
-            moduleOptions:[{
-                label:'动画舞蹈',
-                value:'dance'
-            },{
-                label:'健身指导',
-                value:'exercise'
-            }],
-            chosenCharacter:'',
-            chosenScene:'',
-            chosenModule:'',
-            pageSet: {//页面各个部位加载组件
-                title:'', //标题
-                left:'', //页面左侧
-                bottom:'' //页面底部
-            },
-            pageSetList:{
-                'dance': Dance,
-                'exercise': Exercise
-            },
             sendMsg:{
                 userToken:'123',
                 image:'',
                 task:1
             },
-            confidenceArray:[],
-            myTimer:'' //定时器
+            myTimer:'', //定时器
+            poseData:{}
         },
         mounted: function(){
-            this.initPage(); //页面组件初始化
             this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2Dv5.json", {onProgress: UnityProgress});
 
             this.initCamera(); //初始化摄像头
@@ -296,17 +238,7 @@
 
 
         },
-        watch:{
-            chosenModule: function (newVal) {
-                this.pageSet = this.pageSetList[newVal];
-            }
-        },
         methods:{
-            initPage:function(){ //页面初始化
-                this.chosenCharacter = this.characterOptions[0].value; //初始选择男性角色
-                this.chosenScene = this.sceneOptions[0].value; //初始选择户外场景
-                this.chosenModule = this.moduleOptions[1].value; //初始选择功能分区
-            },
             initCamera:function(){
                 let _this = this;
                 let constraints = { video: true };

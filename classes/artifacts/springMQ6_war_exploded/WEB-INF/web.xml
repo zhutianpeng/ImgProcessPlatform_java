@@ -10,10 +10,10 @@
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
-    <welcome-file-list>
-        <!--<welcome-file>index.jsp</welcome-file>-->
-        <welcome-file>/WEB-INF/jsp/test.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!---->
+        <!--<welcome-file>/WEB-INF/jsp/free.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

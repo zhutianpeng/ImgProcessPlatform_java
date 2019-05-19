@@ -9,3 +9,5 @@ var Exercise = {
     left:'dataBoard', //页面左侧
     bottom:'exeIntro' //页面底部
 };
+
+

@@ -114,8 +114,12 @@
                 <data-box :title="''" :dheight="800">
                     <data-box :title="'操作面板'" :dheight="400" :icon="'account'" :boxb="false">
                     <div style="padding: 10%">
-                        <el-button type="primary">录制视频</el-button>
-                        <el-button type="success">上传视频</el-button>
+                        <form action="/ftpUpload" method="post" enctype="multipart/form-data">
+                            <p><input type="file" name="fileName"/></p>
+                            <p><input type="submit" value="upload"/></p>
+                        </form>
+                        <%--<el-button type="primary">录制视频</el-button>--%>
+                        <%--<el-button type="success">上传视频</el-button>--%>
                     </div>
 
 

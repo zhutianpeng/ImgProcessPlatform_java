@@ -126,6 +126,7 @@ public class PoseUtils {
         }
 
         JSONArray result = JSONArray.fromObject(poseList);
+//        System.out.println(result.toString());
         return result.toString();
 
 

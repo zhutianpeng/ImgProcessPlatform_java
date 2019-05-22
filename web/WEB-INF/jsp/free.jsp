@@ -11,7 +11,7 @@
     <title>姿态分析展示平台</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/webGL/TemplateData/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- 引入vue框架 -->
-    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script><%--录制实时视频用--%>
+    <%--<script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>&lt;%&ndash;录制实时视频用&ndash;%&gt;--%>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script><!-- 引入element组件库 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"><!-- 引入element样式 -->
     <script src="${pageContext.request.contextPath}/newJs/jquery-3.3.1.min.js"></script>
@@ -179,20 +179,20 @@
     var pointMapping = { //关节点映射表，由于识别关节点和Unity关节点不同，因此需要进行转换
         "0": 10,
         "1": 8,
-        "2": 11,
-        "3": 12,
-        "4": 13,
-        "5": 14,
-        "6": 15,
+        "2": 14,
+        "3": 15,
+        "4": 16,
+        "5": 11,
+        "6": 12,
         "7": 13,
-        "8": 4,
-        "9": 5,
-        "10": 6,
-        "11": 1,
-        "12": 2,
-        "13": 16
+        "8": 1,
+        "9": 2,
+        "10": 3,
+        "11": 4,
+        "12": 5,
+        "13": 6
     };
-    var client = Stomp.client(url); TODO 暂时关闭
+    var client = Stomp.client(url); //TODO 暂时关闭
 
     var stompOnMessage = function (message) {
         let jsonData = JSON.parse(message.body); //接收数据JSON示例：{'image':'', 'poseResultParsed':''}
@@ -206,17 +206,16 @@
 
             let singleArray = [];
             for (let key in singlePerson) {
-                app.poseData[key] = singlePerson[key].c; //填充置信度信息
+                app.poseData[key] = singlePerson[key].confidence; //填充置信度信息
                 if (pointMapping[key]) { //进行映射之后的关节点index，如果在定义范围内则进行写入（注意14以后的坐标点都没有用到）
                     singleArray.push(pointMapping[key]);
-                    singleArray.push(singlePerson[key].x - 150);
-                    singleArray.push(400 - singlePerson[key].y);
-
+                    singleArray.push(200 - singlePerson[key].x);
+                    singleArray.push(300 - singlePerson[key].y);
                 }
             }
             if (singleArray) { //数据不为空
-                console.log(singleArray.toString());
-                app.gameInstance.SendMessage("Philip", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
+                // console.log(singleArray.toString());
+                app.gameInstance.SendMessage("BoxUnityChan", "GetPose", singleArray.toString()); //调用Unity内部方法，将姿态数据传入
             }
         }
         if(jsonData.image){
@@ -295,11 +294,15 @@
                 task:1
             },
             myTimer:'', //定时器
-            poseData:{}
+            poseData:{
+                1:'',
+                2:'',
+                3:'',
+            }
         },
         mounted: function(){
             this.initPage(); //页面组件初始化
-            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2Dv5.json", {onProgress: UnityProgress});
+            this.gameInstance = UnityLoader.instantiate("gameContainer", "${pageContext.request.contextPath}/webGL/Build/Receiver2D.json", {onProgress: UnityProgress});
 
             this.initCamera(); //初始化摄像头
             // this.initWebSocket(); //初始化WebSocket
@@ -344,7 +347,7 @@
                 }
             },
             change:function(){ //控制WebGL激活/禁用脚本
-                this.gameInstance.SendMessage("Philip", "ChangeState");
+                // this.gameInstance.SendMessage("Philip", "ChangeState");
                 console.log("脚本状态改变！");
                 this.button.enable = !this.button.enable;
                 if(this.button.enable){
@@ -379,7 +382,7 @@
             onMessage: function(event){
                 if(event.data){
                     console.log("接收到来自后台的消息：" + event.data);
-                    gameInstance.SendMessage("Philip", "GetPose", event.data); //调用Unity内部方法，将姿态数据传入
+                    gameInstance.SendMessage("BoxUnityChan", "GetPose", event.data); //调用Unity内部方法，将姿态数据传入
                 }
             },
             onError: function(){

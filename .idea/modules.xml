@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MotionVisionJava.iml" filepath="$PROJECT_DIR$/MotionVisionJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMQ6.iml" filepath="$PROJECT_DIR$/springMQ6.iml" />
     </modules>
   </component>
 </project>

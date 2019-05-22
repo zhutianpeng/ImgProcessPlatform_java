@@ -83,6 +83,7 @@ public final class RedisUtil {
      *
      * @param jedis
      */
+
     public static void returnResource(final Jedis jedis) {
         if (jedis != null) {
             jedisPool.returnResource(jedis);

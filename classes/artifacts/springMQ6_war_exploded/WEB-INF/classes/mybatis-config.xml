@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--  JavaBean类型自动映射扫描包配置 Java类型别名  -->
+    <typeAliases>
+        <package name="com.tiantian.springintejms.entity"/>
+    </typeAliases>
+
+    <environments default="development">
+        <!-- 数据库环境 -->
+        <environment id="development">
+            <!-- 使用JDBC使用管理 -->
+            <transactionManager type="JDBC"/>
+            <!-- 数据源配置 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://10.103.238.165:3306/exercise?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="openplatform"/>
+                <property name="password" value="openplatform"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 映射器 -->
+    <mappers>
+        <package name="com.tiantian.springintejms.mapper"/>
+    </mappers>
+</configuration>

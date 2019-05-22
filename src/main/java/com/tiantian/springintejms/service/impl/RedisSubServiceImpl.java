@@ -75,7 +75,7 @@ public class RedisSubServiceImpl implements RedisSubService {
 //       activeMQ send for video and poseResultParsed
         ActiveMQQueue destination = new ActiveMQQueue("/user/"+ userToken +"/video");
 
-        producerService.sendMessage(destination,output.toString());
+        producerService.sendMessage(destination, output.toString());
 
     }
 }

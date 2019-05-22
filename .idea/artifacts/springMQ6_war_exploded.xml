@@ -46,6 +46,9 @@
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.2.3" />
           <element id="library" level="project" name="Maven: nu.pattern:opencv:2.4.9-4" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.16" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="MotionVisionJava/web/Web" />

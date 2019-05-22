@@ -11,8 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="MotionVisionJava" target="1.6" />
-      <module name="springMQ6" target="1.6" />
+      <module name="MotionVisionJava" target="8" />
+      <module name="springMQ6" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

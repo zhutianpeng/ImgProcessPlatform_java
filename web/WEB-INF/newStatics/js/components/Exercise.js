@@ -1,10 +1,8 @@
 //数据面板子组件
 var DataBoard = {
-    template: `<data-box :title="'健身数据面板'" :dheight="800">
-                    <data-box :title="'关键关节点置信度统计'" :dheight="400" :icon="'account'" :boxb="false">
-                        <ve-line :data="poseChart.data" :extend="poseChart.extend"></ve-line>
-                    </data-box>
-                </data-box>`,
+    template: `<data-box :title="'关键关节点置信度统计'" :dheight="800">
+                    <ve-bar :data="poseChart.data" :extend="poseChart.extend"></ve-bar>       
+               </data-box>`,
     props:['pose'],
     data:function () {
         return {
@@ -37,6 +35,20 @@ var DataBoard = {
                         textStyle: {
                             color: "#fff"
                         }
+                    },
+                    xAxis:{
+                        axisLine:{
+                            lineStyle:{
+                                color:'#fff'
+                            }
+                        }
+                    },
+                    yAxis:{
+                        axisLine:{
+                            lineStyle:{
+                                color:'#fff'
+                            }
+                        }
                     }
                 },
                 data: {
@@ -52,24 +64,23 @@ var DataBoard = {
     watch:{
         pose:{
             deep: true,
-            handler: function (newPoseData) {
-                this.refreshData(newPoseData);
+            handler: function (newVal, oldVal) {
+                this.refreshData(newVal);
             }
         }
     },
     methods:{
         refreshData: function (poseData) {
-            console.log("data update")
             let poseTemp = []; //该数组用于暂存rows数据
             for(let i = 0; i < 18; i++){
-                if(poseData[i.toString()]){
+                if(poseData[i]){
                     poseTemp.push({
-                        '关节点': this.pointMapping[i],
-                        '置信度': poseData[i.toString()]
+                        '关节点名称': this.pointMapping[i],
+                        '置信度': poseData[i]
                     })
                 }else{
                     poseTemp.push({
-                        '关节点': this.pointMapping[i],
+                        '关节点名称': this.pointMapping[i],
                         '置信度': 0
                     })
                 }
